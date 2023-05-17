@@ -13,3 +13,37 @@ const apiUrls = [
 ];
 
 // You can write your code here
+let allTimer = 0;
+let anyTimer = 0;
+
+const outPutAll = document.querySelector("#output-all");
+const outPutAny = document.querySelector("#output-any");
+
+const all = async function () {
+  while (true) {
+    allTimer++;
+    const prom = await Promise.all(
+      apiUrls.map((val) => {
+        return fetch(val);
+      })
+    );
+    return prom;
+  }
+};
+
+const any = async function () {
+  while (true) {
+    anyTimer++;
+    const prom = await Promise.any(
+      apiUrls.map((val) => {
+        return fetch(val);
+      })
+    );
+    return prom;
+  }
+};
+
+all();
+any();
+outPutAll.innerText = allTimer;
+outPutAny.innerText = anyTimer;
