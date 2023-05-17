@@ -27,6 +27,7 @@ const all = async function () {
         return fetch(val);
       })
     );
+    outPutAll.innerText = allTimer;
     return prom;
   }
 };
@@ -39,11 +40,10 @@ const any = async function () {
         return fetch(val);
       })
     );
+    outPutAny.innerText = anyTimer;
     return prom;
   }
 };
 
 all();
 any();
-outPutAll.innerText = allTimer;
-outPutAny.innerText = anyTimer;
